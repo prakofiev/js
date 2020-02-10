@@ -1,0 +1,142 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+
+	// Задание 3
+
+	var a = +prompt('Введите любое число');
+	var b = +prompt('Введите любое число');
+
+	if (a > 0 && b >0){
+		alert(a - b);
+	}
+	else if (a < 0 && b < 0){
+		alert(a * b);
+	}
+	else if ((a < 0 && b >= 0) || (a >= 0 && b < 0)){
+		alert(a + b);
+	}
+
+
+	// Задание 4
+    
+    //Решение через запуск рекурсивной функции
+    var a = +prompt('Введите число от 1 до 15');
+    function order(a){
+        var numberString = a + " ";
+        if (a < 15)
+            numberString += order(a + 1);
+        return numberString;
+    }
+    alert(order(a));
+    
+
+    //Решение через switch
+    switch (a){
+    	case 1:
+        alert(order(1));
+        break;
+        case 2:
+        alert(order(2));
+        break;
+        case 3:
+        alert(order(3));
+        break;
+        case 4:
+        alert(order(4));
+        break;
+        case 5:
+        alert(order(5));
+        break;
+        case 6:
+        alert(order(6));
+        break;
+        case 7:
+        alert(order(7));
+        break;
+        case 8:
+        alert(order(8));
+        break;
+        case 9:
+        alert(order(9));
+        break;
+        case 10:
+        alert(order(10));
+        break;
+        case 11:
+        alert(order(11));
+        break;
+        case 12:
+        alert(order(12));
+        break;
+        case 13:
+        alert(order(13));
+        break;
+        case 14:
+        alert(order(14));
+        break;
+        case 15:
+        alert(order(15));
+        break;
+        default:
+        alert('Вы ввели неправильное число')
+    }
+
+
+	// Задание 5
+    
+    function addition(a,b){
+        return a + b;	
+    }
+    function subtraction(a,b){
+        return a - b;	
+    }
+    function multiplication(a,b){
+        return a * b;	
+    }
+    function division(a,b){
+        return a / b;	
+    }
+
+
+	// задание 6
+    
+	function mathOperation (arg1, arg2, operation) {
+    	switch (operation){
+        	case 'addition':
+            	result = addition(arg1, arg2);
+                break;
+            case 'subtraction':
+            	result = subtaction(arg1, arg2);
+                break;
+            case 'multiplication':
+            	result = multiplication(arg1, arg2);
+                break;
+            case 'division':
+            	result = division(arg1, arg2);
+                break;
+        }
+        return result;
+    }
+
+	var a1 = +prompt('Введите первое число');
+    var a2 = +prompt('Введите второе число');
+    var operation = prompt('Введите название операции');
+	alert('Результат: ' + mathOperation(a1, a2, operation));
+  
+    
+    // Задание 8
+       
+    function power(val, pow){
+    	result = val;
+    	if (pow > 1)
+        	result *= power(val, pow - 1);
+        return result;    
+    }
+    var a = +prompt('Введите число');
+    var b = +prompt('Введите степень');
+    alert(a + ' в степени ' + b + ' равняется ' + power(a,b))
+    
+
+
+
+</script>
