@@ -1,0 +1,148 @@
+<script type="text/javascript">
+	
+	// Задание 1
+/*
+	function magic (userNumber){
+        var numbers = {
+            units: 0,
+            tens: 0,
+            hundreds: 0
+            };
+        userNumber = String(userNumber);    
+        arr = userNumber.split('');
+        console.log(arr);
+
+        if (userNumber > 999) {
+            console.log("Неверное число");
+            numbers = null;
+            } else if (userNumber < 999 && userNumber > 99) {
+            	numbers.units = arr[2];
+            	numbers.tens = arr[1];
+            	numbers.hundreds = arr[0];
+            } else if (userNumber < 100 && userNumber > 9) {
+            	numbers.units = arr[1];
+            	numbers.tens = arr[0];
+            }
+            else if (userNumber < 10) {
+            	numbers.units = arr[0];
+            }
+
+        return numbers;
+    }        
+    
+    var a = prompt("Введите число от 0 до 999");
+    var b = magic(a);
+    console.log(b);
+    // document.write("Ваше число: " + a + " | Единицы: " + b.units + " Десятки: " + b.tens + " Сотни: " + b.hundreds);
+
+*/
+
+    // Задание 2
+
+    var game = [
+    	{
+    	question: 'В каком году отменили крепостное право? \n',
+     	answer1: '1) 1861 \n',
+     	answer2: '2) 1917 \n', 
+     	answer3: '3) 1842 \n',
+     	answer4: '4) 1881 \n', 
+     	correctAnswer: 1
+     	},
+
+    	{
+    	question: 'Какой вид спорта совмещающий лыжи и стрельбу?\n', 
+    	answer1: '1) Слалом \n', 
+    	answer2: '2) Кёрлинг \n', 
+    	answer3: '3) Биатлон \n', 
+    	answer4: '4) Скелетон \n', 
+    	correctAnswer: 3
+    	},
+
+    	{
+    	question: 'Сооснователь Apple? \n', 
+    	answer1: '1) Алек Болдуин \n', 
+    	answer2: '2) Стив Возняк \n', 
+    	answer3: '3) Стив Балмер \n', 
+    	answer4: '4) Сатья Наделла \n', 
+    	correctAnswer: 2
+    	},
+
+    	{
+    	question: 'Столица Бангладеша? \n', 
+    	answer1: '1) Дакка \n', 
+    	answer2: '2) Ереван \n', 
+    	answer3: '3) Канберра \n', 
+    	answer4: '4) Катманду \n', 
+    	correctAnswer: 1
+    	},
+
+    	{
+    	question: 'Кто написал "Человек, который смеется"? \n', 
+    	answer1: '1) Эрих Мария Ремарк \n', 
+    	answer2: '2) Гете \n', 
+    	answer3: '3) Гюго \n', 
+    	answer4: '4) Гессе \n', 
+    	correctAnswer: 3
+    	},
+    	];
+
+		// Функция игры
+     	function startGame(number){
+	    	var event = +prompt(game[number].question + game[number].answer1 + game[number].answer2 + game[number].answer3 + game[number].answer4);
+	    	if (event > 4 || event < 0 || isNaN(event) == true) {
+				do {
+					alert("Вы ввели неверное значение");
+					event = +prompt(game[number].question + game[number].answer1 + game[number].answer2 + game[number].answer3 + game[number].answer4);
+				} while (event > 4 || event < 1 || isNaN(event) == true);
+			}		
+			game[number].userAnswer = event;
+			switch (event){
+				case 1:
+					game[number].numberOfUserAnswer = game[number].answer1;
+					break;
+				case 2:
+					game[number].numberOfUserAnswer = game[number].answer2;
+					break;
+				case 3:
+					game[number].numberOfUserAnswer = game[number].answer3;
+					break;
+				case 4:
+					game[number].numberOfUserAnswer = game[number].answer4;
+					break;	
+			}
+		}
+		
+		// Проверка ответа Пользователя 
+		function checkUserAnswer (numberOf) {
+			q = numberOf - 1;
+			var rightAnswer;
+			if (game[q].userAnswer == game[q].correctAnswer) {
+				rightAnswer = "Верный ответ\n";
+			} else {
+				rightAnswer = "Неверный ответ\n";
+			}
+			alert("Вопрос: " + game[q].question + "Ваш ответ: " + game[q].numberOfUserAnswer + rightAnswer);
+		};		
+		
+		// Запускаем игру
+		for (var i = 0; i < game.length; i++) {
+			startGame(i);
+	    }	
+		
+		// Узнаем результат
+		var point = 0;
+		for (var p = 0; p < game.length; p++) {
+			if (game[p].userAnswer == game[p].correctAnswer){
+				point += 1;
+			}
+		}
+		alert("У вас " + point + " правильных ответов из " + game.length);	
+		
+		// Смотрим свои ответы
+		var uAnswer = +prompt("На какой вопрос вы хотите узнать ответ? Если не хотите, то введите любое число больше 5");
+		checkUserAnswer(uAnswer);
+		
+		// console.log(game[0]);
+
+	 
+</script>
