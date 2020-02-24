@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Шахматы</title>
+</head>
+<body>
+
+
+
+<script type="text/javascript">
+
+	var main = document.createElement('div');
+	main.style = "height: 800px; width: 800px; margin: auto;";
+	document.body.appendChild(main);
+
+	var figuresWhite = [,"&#9814;","&#9816;","&#9815;","&#9813;","&#9812;","&#9815;","&#9816;","&#9814;",] // расстановка белых фигур
+	var figuresBlack =[,"&#9820;","&#9822","&#9821","&#9819","&#9818","&#9821","&#9822","&#9820",] // расстановка черных фигур
+	var pawnWhite = "&#9817"; // белая пешка
+	var pawnBlack = "&#9823"; // черная пешка
+
+	// Функция создания ячеек
+	function cellCreate(property, text) {
+		var cell = document.createElement('div');
+		cell.style = "height: 80px; width: 80px; text-align: center; float: left; display: inline-block;" + property;
+		cell.innerHTML = text;
+		row.appendChild(cell);
+	}
+
+	// Функция создания строк
+	function rowCreate(){
+		var row = document.createElement('div');
+		row.style = "height: 80px; width: 800px;";
+		return main.appendChild(row);
+	}
+
+	// Функция вставки чисел по бокам
+	function numberCheck (){
+		var cell = document.createElement('div');
+			if (n == 0) {
+				cellCreate("",numbers[i]);
+			} else {
+				cellCreate(" transform: rotate(180deg);",numbers[i]);
+			}
+	}
+
+	var letters = [,"A","B","C","E","F","G","H","I",];
+	var numbers = [,"8","7","6","5","4","3","2","1",];
+
+	for (var i = 0; i < 10; i++){
+		if (i == 0 || i == 9){	
+			row = rowCreate();
+			for (var n = 0; n < 10; n++) {
+					var cell = document.createElement('div');
+					cell.style = "height: 80px; width: 80px;; float: left; display: inline-block;";
+					if (n != 0 && n != 9){
+						cell.innerText = letters[n];
+						cell.style.textAlign = "center";
+					}
+					row.appendChild(cell);
+			}		
+		}
+		else if (i == 1){	
+			row = rowCreate();
+			for (var n = 0; n < 10; n++) {
+				if (n == 0 || n == 9){
+					numberCheck ();	
+				}	
+				else if (n % 2 == 1 ){
+					cellCreate("background-color: grey; font-size: 70px;", figuresWhite[n]);
+				} else {
+					cellCreate("background-color: white; font-size: 70px;", figuresWhite[n]);
+				}
+			}
+		}
+		else if (i == 2){	
+			row = rowCreate();
+			for (var n = 0; n < 10; n++) {
+				if (n == 0 || n == 9){
+					numberCheck ();	
+				}	
+				else if (n % 2 == 1 ){
+					cellCreate("background-color: white; font-size: 70px;", pawnWhite);
+				} else {
+					cellCreate("background-color: grey; font-size: 70px;", pawnWhite);
+				}
+			}
+		}
+		else if (i == 7){	
+			row = rowCreate();
+			for (var n = 0; n < 10; n++) {
+				if (n == 0 || n == 9){
+					numberCheck ();	
+				}	
+				else if (n % 2 == 1 ){
+					cellCreate("background-color: grey; font-size: 70px;", pawnBlack);
+				} else {
+					cellCreate("background-color: white; font-size: 70px;", pawnBlack);
+				}
+			}
+		}	
+		else if (i == 8){	
+			row = rowCreate();
+			for (var n = 0; n < 10; n++) {
+				if (n == 0 || n == 9){
+					numberCheck ();	
+				}	
+				else if (n % 2 == 1 ){
+					cellCreate("background-color: white; font-size: 70px;", figuresBlack[n]);
+				} else {
+					cellCreate("background-color: grey; font-size: 70px;", figuresBlack[n]);
+				}
+			}
+		}		
+		else if (i % 2 == 1 && (i != 9 && i != 0)){
+			row = rowCreate();
+			for (var n = 0; n < 10; n++) {
+				if (n == 0 || n == 9){
+					numberCheck ();	
+				}	
+				else if (n % 2 == 1 ){
+					cellCreate("background-color: grey;", "");
+				} else {
+					cellCreate("background-color: white;", "");
+				}
+			}
+		}
+		else {
+			row = rowCreate();
+			for (var n = 0; n < 10; n++) {
+				if (n == 0 || n == 9){
+					numberCheck ();
+				}
+				else if (n % 2 == 1) {
+					cellCreate("background-color: white;", "");
+				} else {
+					cellCreate("background-color: grey;", "");
+				}
+			}
+		}	
+	}
+
+</script>
+</body>
+</html>
